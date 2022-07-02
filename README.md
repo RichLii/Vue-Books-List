@@ -36,10 +36,11 @@ https://richlii.github.io/Vue-Books-List/
 
 - **新增書本** 成功後會導向首頁
 
-- 書本頁中可以修改書本資料，也可刪除書本，也都會有提示框顯示，提升 UI / UX
+- 所有 CRUD 的動作都會有提示框顯示，提升 UI / UX
 
   ![image](/assets/p4.png)
   ![image](/assets/p5.png)
+  ![image](/assets/p6.png)
 
 
 ### 子元件 Components
