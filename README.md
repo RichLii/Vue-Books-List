@@ -1,4 +1,8 @@
-# book
+# Vue-Books-List 小專案
+
+## 展示網址
+---
+https://richlii.github.io/Vue-Books-List/
 
 ## Project setup
 ```
