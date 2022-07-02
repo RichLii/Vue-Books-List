@@ -1,9 +1,9 @@
 <template>
   <div>
     <header-style :text="'書本列表'" :status="'create'" />
-    <div class="bg-gray-100 min-h-screen">
+    <div class="min-h-screen bg-gray-100">
       <div class="container p-4">
-        <div class="flex items-center justify-center flex-wrap">
+        <div class="flex-center flex-wrap">
           <book-card
             v-for="book of bookDetail"
             :key="book"
@@ -26,7 +26,7 @@ import { onMounted, ref } from 'vue'
 const bookDetail = ref('')
 onMounted(() => {
   axios.get('/books/').then((res) => {
-    bookDetail.value = res.data
+    bookDetail.value = res.data.reverse()
   })
 })
 </script>

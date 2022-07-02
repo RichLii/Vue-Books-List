@@ -1,6 +1,6 @@
 <template>
   <header-style :text="'新增書本'" :showGoBack="true" />
-  <div class="bg-gray-100 min-h-screen flex items-center">
+  <div class="flex-center min-h-screen flex-col bg-gray-100">
     <div class="container p-4">
       <edit-frame
         :editing="true"
@@ -26,7 +26,7 @@
   <toast-message
     :showToast="showSuccess"
     :message="'新增成功！'"
-    @handler="router.replace({ name: 'bookList' })"
+    @handler="goHomePage()"
   />
   <toast-message
     :showToast="showError"
@@ -73,10 +73,14 @@ const create = () => {
     showError.value = true
   }
 }
+
+const goHomePage = () => {
+  router.replace({ name: 'bookList' })
+}
 </script>
 
 <style lang="postcss" scoped>
 .button {
-  @apply w-[46%] h-12;
+  @apply h-12 w-[46%];
 }
 </style>

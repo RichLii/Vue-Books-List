@@ -1,7 +1,7 @@
 <template>
   <div>
     <button
-      class="text-white text-xl font-bold rounded-[99rem] w-full h-full"
+      class="h-full w-full rounded-[99rem] text-xl font-bold text-white"
       :style="{ background: props.color }"
       @click="$emit('handler')"
     >

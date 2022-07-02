@@ -1,7 +1,7 @@
 <template>
-  <div class="sticky top-0 bg-white z-50">
+  <div class="sticky top-0 z-50 bg-white">
     <div class="container">
-      <div class="flex items-center justify-center h-14 relative">
+      <div class="relative flex h-14 items-center justify-center">
         <h1 class="text-2xl font-bold">{{ text }}</h1>
         <button
           class="button left-5 hover:bg-gray-100"
@@ -10,7 +10,7 @@
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6 text-gray-900"
+            class="h-6 w-6 text-gray-900"
             fill="currentColor"
             viewBox="0 0 16 16"
           >
@@ -26,7 +26,7 @@
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
-            class="w-5 h-5"
+            class="h-5 w-5"
             viewBox="0 0 16 16"
             style="color: #3b82f6"
             @click="$emit('startEdit', true)"
@@ -87,7 +87,10 @@ const goBack = () => {
 
 <style lang="postcss" scoped>
 .button {
-  @apply absolute rounded-full w-8 h-8 flex items-center justify-center;
+  @apply absolute flex h-8 w-8 items-center justify-center rounded-full;
+}
+.button__edit {
+  @apply right-5 p-1 text-blue-500 hover:bg-blue-100/50;
 }
 .button__edit {
   @apply right-5 text-blue-500 hover:bg-blue-100/50 p-1;
