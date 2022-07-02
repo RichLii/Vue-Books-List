@@ -1,21 +1,28 @@
 <template>
   <div
-    class="fixed z-[99] top-0 flex items-center justify-center h-screen w-screen bg-black/10"
+    class="flex-center fixed top-0 z-[99] h-screen w-screen bg-black/10"
     v-if="showToast"
   >
-    <div
-      class="text-black bg-white w-48 h-24 flex flex-col items-center justify-center"
-    >
-      <span class="mb-4 font-bold text-lg">{{ props.message }}</span>
-      <button class="text-gray-800 text-sm" @click="$emit('handler')">
-        確定
-      </button>
+    <div class="flex-center h-24 w-48 flex-col bg-white text-black">
+      <span class="mb-4 text-lg font-bold">{{ props.message }}</span>
+      <div class="flex">
+        <button
+          class="text-sm text-gray-800"
+          @click="$emit('cancel')"
+          v-if="showCancel"
+        >
+          取消
+        </button>
+        <button class="ml-4 text-sm text-gray-800" @click="$emit('handler')">
+          確定
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps, onUnmounted, toRef, watch } from 'vue'
 const props = defineProps({
   color: {
     type: String,
@@ -25,10 +32,24 @@ const props = defineProps({
     type: String,
     default: 'message!'
   },
+  showCancel: {
+    type: Boolean,
+    default: false
+  },
   showToast: {
     type: Boolean,
     default: false
   }
+})
+const showToast = toRef(props, 'showToast')
+
+watch(showToast, (nV, oV) => {
+  if (nV) document.documentElement.style.overflow = 'hidden'
+  else document.documentElement.style.overflow = 'visible'
+})
+
+onUnmounted(() => {
+  document.documentElement.style.overflow = 'visible'
 })
 </script>
 

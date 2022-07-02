@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <div>
     <div class="input__container">
       <label class="input__label">名稱</label>
       <div class="input__frame" v-if="!editing">
@@ -23,22 +23,22 @@
       />
     </div>
     <div class="relative bg-white">
-      <label class="whitespace-nowrap h-16 flex items-center pl-8 font-bold"
+      <label class="flex h-16 items-center whitespace-nowrap pl-8 font-bold"
         >備註</label
       >
       <div class="px-8 pb-8">
-        <div class="w-full h-[30vh]" v-if="!editing">
-          {{ description }}
+        <div class="h-[30vh] w-full overflow-auto break-all" v-if="!editing">
+          <p>{{ description }}</p>
         </div>
         <textarea
           style="resize: none"
-          class="input__outline w-full h-[20vh]"
+          class="input__outline h-[30vh] w-full"
           v-model="editingContent.description"
           v-else
         />
       </div>
     </div>
-  </form>
+  </div>
 </template>
 
 <script setup>
@@ -74,15 +74,15 @@ const editingContent = toRef(props, 'editingContent')
 
 <style lang="postcss" scoped>
 .input__frame {
-  @apply flex items-center bg-white pl-24 h-16 w-full;
+  @apply flex h-16 w-full items-center overflow-x-auto whitespace-nowrap bg-white pl-24 pr-4;
 }
 .input__outline {
   @apply outline-none focus:outline-[2px] focus:outline-blue-400;
 }
 .input__container {
-  @apply mb-12 relative;
+  @apply relative mb-12;
 }
 .input__label {
-  @apply absolute pl-8 top-1/2 -translate-y-1/2 font-bold;
+  @apply absolute top-1/2 w-24 -translate-y-1/2 bg-white pl-8 font-bold;
 }
 </style>
