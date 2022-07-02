@@ -1,7 +1,11 @@
+#!/bin/bash
+# 只需要修改這裡為你的 git repo
+repo=git@github.com:RichLii/Vue-Books-List.git
+
 # npm build 部分
 npm run build
 
-copy %cd%\dist\index.html %cd%\public\404.html /y
+cp -f $PWD/dist/index.html $PWD/public/404.html
 
 npm run build
 
@@ -13,8 +17,7 @@ git init
 
 git checkout -b gh-pages
 
-# 只需要修改這裡為你的 git repo
-git remote add origin git@github.com:RichLii/Vue-Books-List.git
+git remote add origin $repo
 
 git add .
 
