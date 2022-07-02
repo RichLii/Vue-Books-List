@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import BookList from '../views/BookList.vue'
 import BookDetail from '../views/BookDetail.vue'
+import BookCreate from '../views/BookCreate.vue'
 import NotFoundPage from '../views/NotFoundPage.vue'
 
 const routes = [
@@ -16,6 +17,11 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     components: { default: BookList }
+  },
+  {
+    path: '/books/create',
+    name: 'create',
+    components: { default: BookCreate }
   },
   {
     path: '/books/:bookId([0-9]+)',
