@@ -4,11 +4,13 @@
     class="card__container mx-2 mb-6 h-[30vh] w-[calc(50%-1rem)] bg-white shadow-lg active:scale-95"
   >
     <div
-      class="card__mask flex-center relative h-[80%] overflow-hidden bg-yellow-300 p-4 lg:bg-gray-600"
+      class="card__mask relative h-[80%] overflow-hidden bg-yellow-300 p-4 lg:bg-gray-600"
     >
-      <p class="z-[10] text-center font-medium text-black">
-        {{ title }}
-      </p>
+      <div
+        class="relative z-[10] flex h-full justify-center overflow-auto font-[600] text-black"
+      >
+        <p class="my-auto h-fit text-center">{{ title }}</p>
+      </div>
     </div>
     <div class="flex-center z-[20] h-[20%] w-full py-4">
       <p class="ml-2 leading-none">{{ author }}</p>

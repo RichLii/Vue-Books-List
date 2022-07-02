@@ -2,7 +2,9 @@
   <div class="sticky top-0 z-50 bg-white">
     <div class="container">
       <div class="relative flex h-14 items-center justify-center">
-        <h1 class="text-2xl font-bold">{{ text }}</h1>
+        <h1 class="w-1/2 truncate text-center text-2xl font-bold">
+          {{ text }}
+        </h1>
         <button
           class="button left-5 hover:bg-gray-100"
           @click="goBack"
@@ -93,6 +95,6 @@ const goBack = () => {
   @apply right-5 p-1 text-blue-500 hover:bg-blue-100/50;
 }
 .button__edit {
-  @apply right-5 text-blue-500 hover:bg-blue-100/50 p-1;
+  @apply right-5 p-1 text-blue-500 hover:bg-blue-100/50;
 }
 </style>

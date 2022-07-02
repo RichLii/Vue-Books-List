@@ -2,7 +2,7 @@
   <div>
     <div class="input__container">
       <label class="input__label">名稱</label>
-      <div class="input__frame" v-if="!editing">
+      <div class="input__frame" ref="titleFrame" id="title" v-if="!editing">
         {{ title }}
       </div>
       <input
@@ -13,7 +13,7 @@
     </div>
     <div class="input__container">
       <label class="input__label">作者</label>
-      <div class="input__frame" v-if="!editing">
+      <div class="input__frame" ref="authorFrame" id="author" v-if="!editing">
         {{ author }}
       </div>
       <input
@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-import { defineProps, toRef } from 'vue'
+import { defineProps, onBeforeUnmount, onMounted, ref, toRef } from 'vue'
 const props = defineProps({
   editing: {
     type: Boolean,
@@ -65,16 +65,42 @@ const props = defineProps({
     default: undefined
   }
 })
+const titleFrame = ref()
+const authorFrame = ref()
 const title = toRef(props, 'title')
 const author = toRef(props, 'author')
 const editing = toRef(props, 'editing')
 const description = toRef(props, 'description')
 const editingContent = toRef(props, 'editingContent')
+
+const scrollX = (e) => {
+  e.preventDefault()
+  if (e.target.id === 'title') titleFrame.value.scrollLeft += e.deltaY
+  if (e.target.id === 'author') authorFrame.value.scrollLeft += e.deltaY
+}
+
+onMounted(() => {
+  if (!editing.value) {
+    titleFrame.value.addEventListener('wheel', scrollX)
+    authorFrame.value.addEventListener('wheel', scrollX)
+  }
+})
+
+onBeforeUnmount(() => {
+  if (titleFrame.value && authorFrame.value) {
+    titleFrame.value.removeEventListener('wheel', scrollX)
+    authorFrame.value.removeEventListener('wheel', scrollX)
+  }
+})
 </script>
 
 <style lang="postcss" scoped>
 .input__frame {
   @apply flex h-16 w-full items-center overflow-x-auto whitespace-nowrap bg-white pl-24 pr-4;
+  scrollbar-width: none;
+}
+.input__frame::-webkit-scrollbar {
+  display: none;
 }
 .input__outline {
   @apply outline-none focus:outline-[2px] focus:outline-blue-400;
@@ -83,6 +109,6 @@ const editingContent = toRef(props, 'editingContent')
   @apply relative mb-12;
 }
 .input__label {
-  @apply absolute top-1/2 w-24 -translate-y-1/2 bg-white pl-8 font-bold;
+  @apply y-center absolute w-24 bg-white pl-8 font-bold;
 }
 </style>
