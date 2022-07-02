@@ -8,7 +8,7 @@ https://richlii.github.io/Vue-Books-List/
 - 使用 Tailwind 為 CSS 框架
 - 使用 Vue-Router 做頁面上的切換，分為三個頁面
 - 使用 Vue3 CompositionAPI
-
+---
 ## 頁面
 - **列表頁面** 
 
@@ -25,7 +25,7 @@ https://richlii.github.io/Vue-Books-List/
   新增書本頁面
 
   ![image](/assets/p3.png)
-
+---
 ## 邏輯、流程
 ### 主要頁面 Views
 - 進入首頁（列表頁面）後，在 Vue 掛載完成後會先 GET API 去拿所有的書本資料，排序後將他渲染到頁面上
@@ -46,7 +46,7 @@ https://richlii.github.io/Vue-Books-List/
 - 列表上每一本書都是一個 Component，所有的資訊與功能都封裝在這個 Component 裡面
 - Header 及輸入匡也都是 Component，若有重複使用的 tempelate 都會封裝成 Component，透過 Props 與 emits 去做參數上的變動
 
-
+---
 ## 使用技術、套件
 ### axios
 - 拿來發送 API 的套件，若是需要初始化某些資料，需要在 onMounted 這個生命週期當中使用，這樣才能正確的將資料渲染到畫面上。
@@ -63,6 +63,7 @@ https://richlii.github.io/Vue-Books-List/
   ```
 - 可以幫你排序 Tailwind 的 Class，讓整個專案閱讀及維護上更方便
 
+---
 
 ## 安裝說明
 
